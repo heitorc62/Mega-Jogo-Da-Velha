@@ -22,11 +22,8 @@ class tabuleiro():
                 self.winner = self.grid[0][i]
                 return
         
-        if self.filled == 9:   # VELHA
+        if self.filled == 9:
             self.winner = "draw"
-        
-    def __str__(self):
-        return (f" {self.grid[0][0]} | {self.grid[0][1]} | {self.grid[0][2]} \n {self.grid[1][0]} | {self.grid[1][1]} | {self.grid[1][2]} \n {self.grid[2][0]} | {self.grid[2][1]} | {self.grid[2][2]}")
 
 class mega(tabuleiro):
     def __init__(self):
@@ -48,19 +45,14 @@ class mega(tabuleiro):
         self.check_winner()
         return 0
 
-    # def show(self):
-    #     for linha in self.grid_mega:
-    #         for tab in linha:
-    #             print(tab)
-    #             print()
-    #         print()
-
     def show(self):
         for i in range(3):
-            if i != 0: print()
+            print("           |             |           ")
             for j in range(3):
                 print(f"{self.grid_mega[i][0].grid[j]}  |  {self.grid_mega[i][1].grid[j]}  |  {self.grid_mega[i][2].grid[j]}")
-            if(i!= 2): print("_____________________________________")
+            if(i!= 2): print("___________|_____________|___________")
+            else:
+                print("           |             |           ")
              
     
 class mini(tabuleiro):
@@ -79,10 +71,8 @@ class mini(tabuleiro):
             return -1
 
         
-    # def __str__(self):
-    #     return (f" {self.grid[0][0]} | {self.grid[0][1]} | {self.grid[0][2]} \n {self.grid[1][0]} | {self.grid[1][1]} | {self.grid[1][2]} \n {self.grid[2][0]} | {self.grid[2][1]} | {self.grid[2][2]}")
-    # def __str__(self):
-    #     return tabuleiro.__str__(self)
+    def __str__(self):
+        return (f" {self.grid[0][0]} | {self.grid[0][1]} | {self.grid[0][2]} \n {self.grid[1][0]} | {self.grid[1][1]} | {self.grid[1][2]} \n {self.grid[2][0]} | {self.grid[2][1]} | {self.grid[2][2]}")
 
 def main():
     tab = mega()
@@ -99,7 +89,7 @@ def main():
     if tab.winner == "draw":
         print("Deu Velha!!")
     else:
-        print(f"O vencedor é: {tab.winne}")
+        print(f"O vencedor é: {tab.winner}")
 
 if __name__ == "__main__":
     main()
