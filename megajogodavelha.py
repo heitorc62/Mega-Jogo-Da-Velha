@@ -1,34 +1,45 @@
-class tabuleiro():
-    # 0 -> nao marcado
-    # 1 -> player 1
-    # 2 -> jogador 2
+class Tabuleiro():
+    # ' ' -> nao marcado
+    # 'X' -> player 1
+    # 'O' -> jogador 2
+    # '-' -> velha
     def __init__(self):
-        self.grid = [[0, 0, 0],[0, 0, 0],[0, 0, 0]]
+        self.grid = [[" ", " ", " "],[" ", " ", " "],[" ", " ", " "]]
         self.winner = -1
         self.filled = 0
 
     def check_winner(self):
-        if self.grid[0][0] == self.grid[1][1] == self.grid[2][2] and self.grid[0][0] != 0 and self.grid[0][0] != "draw":
+        if self.winner != -1: return
+        if self.grid[0][0] == self.grid[1][1] == self.grid[2][2] and self.grid[0][0] != " " and self.grid[0][0] != "-" :
             self.winner = self.grid[0][0]
+            if(self.winner == "X"): self.grid= [["X", " ", "X"],[" ", "X", " "],["X", " ", "X"]]
+            elif(self.winner == "O"): self.grid= [["O", "O", "O"],["O", " ", "O"],["O", "O", "O"]]
             return
-        if self.grid[0][2] == self.grid[1][1] == self.grid[2][0] and self.grid[0][2] != 0 and self.grid[0][2] != "draw":
-            self.winner = self.grid[0][0]
+        if self.grid[0][2] == self.grid[1][1] == self.grid[2][0] and self.grid[0][2] != " " and self.grid[0][2] != "-" :
+            self.winner = self.grid[0][2]
+            if(self.winner == "X"): self.grid= [["X", " ", "X"],[" ", "X", " "],["X", " ", "X"]]
+            elif(self.winner == "O"): self.grid= [["O", "O", "O"],["O", " ", "O"],["O", "O", "O"]]
             return
         for i in range(3):
-            if self.grid[i][0] == self.grid[i][1] == self.grid[i][2] and self.grid[i][0] != 0 and self.grid[i][0] != "draw":
+            if self.grid[i][0] == self.grid[i][1] == self.grid[i][2] and self.grid[i][0] != " " and self.grid[i][0] != "-" :
                 self.winner = self.grid[i][0]
+                if(self.winner == "X"): self.grid= [["X", " ", "X"],[" ", "X", " "],["X", " ", "X"]]
+                elif(self.winner == "O"): self.grid= [["O", "O", "O"],["O", " ", "O"],["O", "O", "O"]]
                 return
-            if self.grid[0][i] == self.grid[1][i] == self.grid[2][i] and self.grid[0][i] != 0 and self.grid[0][i] != "draw":
+            if self.grid[0][i] == self.grid[1][i] == self.grid[2][i] and self.grid[0][i] != " " and self.grid[0][i] != "-" :
                 self.winner = self.grid[0][i]
+                if(self.winner == "X"): self.grid= [["X", " ", "X"],[" ", "X", " "],["X", " ", "X"]]
+                elif(self.winner == "O"): self.grid= [["O", "O", "O"],["O", " ", "O"],["O", "O", "O"]]
                 return
         
         if self.filled == 9:
-            self.winner = "draw"
+            self.winner = "-"
+            self.grid = [["-", "-", "-"],["-", "-", "-"],["-", "-", "-"]]
 
-class mega(tabuleiro):
+class Mega(Tabuleiro):
     def __init__(self):
-        tabuleiro.__init__(self)
-        self.grid_mega = [[mini(), mini(), mini()],[mini(), mini(), mini()],[mini(), mini(), mini()]]
+        Tabuleiro.__init__(self)
+        self.grid_mega = [[Mini(), Mini(), Mini()],[Mini(), Mini(), Mini()],[Mini(), Mini(), Mini()]]
 
     def play(self,wich,row,col,player):
         wich -= 1
@@ -47,22 +58,26 @@ class mega(tabuleiro):
 
     def show(self):
         for i in range(3):
-            print("           |             |           ")
+            print("         |         |         ")
             for j in range(3):
-                print(f"{self.grid_mega[i][0].grid[j]}  |  {self.grid_mega[i][1].grid[j]}  |  {self.grid_mega[i][2].grid[j]}")
-            if(i!= 2): print("___________|_____________|___________")
+                for k in range(3):
+                    if k < 2 : end =  "  |"
+                    else: end =""
+                    print(f"  {self.grid_mega[i][k].grid[j][0]}|{self.grid_mega[i][k].grid[j][1]}|{self.grid_mega[i][k].grid[j][2]}",end=end)
+                print()
+            if(i!= 2): print("_________|_________|_________")
             else:
-                print("           |             |           ")
+                print("         |         |         ")
              
     
-class mini(tabuleiro):
+class Mini(Tabuleiro):
     def __init__(self):
-        tabuleiro.__init__(self)
+        Tabuleiro.__init__(self)
     
     def play(self,row,col,player):
         row -= 1
         col -= 1
-        if self.grid[row][col] == 0 and 0 <= row <= 2 and 0 <= col <= 2:         
+        if self.grid[row][col] == " " and 0 <= row <= 2 and 0 <= col <= 2:         
             self.grid[row][col] = player
             self.filled += 1
             return 0
@@ -75,18 +90,18 @@ class mini(tabuleiro):
         return (f" {self.grid[0][0]} | {self.grid[0][1]} | {self.grid[0][2]} \n {self.grid[1][0]} | {self.grid[1][1]} | {self.grid[1][2]} \n {self.grid[2][0]} | {self.grid[2][1]} | {self.grid[2][2]}")
 
 def main():
-    tab = mega()
+    tab = Mega()
     jogador = 0
     while tab.winner == -1:
         tab.show()
-        atual = 2 if jogador % 2 == 0 else 1 
+        atual = "X" if jogador % 2 == 0 else "O" 
         print(f"Jogador {atual} : Qual sua jogada? Ex: 2 1 3 , para tabuleiro 2 linha 1 e coluna 3")
         grid, row, col =  [int(i) for i in input().split()]
         if(tab.play(grid,row,col,atual) == 0):
             jogador += 1
             tab.check_winner()
     tab.show()
-    if tab.winner == "draw":
+    if tab.winner == "-":
         print("Deu Velha!!")
     else:
         print(f"O vencedor é: {tab.winner}")
