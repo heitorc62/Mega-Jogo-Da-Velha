@@ -82,8 +82,8 @@ class Noob(Player):
         return Player.play(self, game, tab_num, row, col, self.team)
 
 def main():
-    player1 = Human("X")
-    player2 = Human("O")
+    player1 = Clumsy("X")
+    player2 = Clumsy("O")
     game = Game(player1, player2)
     game.playing()
 

@@ -10,29 +10,15 @@ class Tabuleiro():
 
     def check_winner(self):
         if self.winner != -1: return
-        if self.grid[0][0] == self.grid[1][1] == self.grid[2][2] and self.grid[0][0] != " " and self.grid[0][0] != "-" :
-            self.winner = self.grid[0][0]
-            if(self.winner == "X"): self.grid= [["X", " ", "X"],[" ", "X", " "],["X", " ", "X"]]
-            elif(self.winner == "O"): self.grid= [["O", "O", "O"],["O", " ", "O"],["O", "O", "O"]]
-            return
-        if self.grid[0][2] == self.grid[1][1] == self.grid[2][0] and self.grid[0][2] != " " and self.grid[0][2] != "-" :
-            self.winner = self.grid[0][2]
-            if(self.winner == "X"): self.grid= [["X", " ", "X"],[" ", "X", " "],["X", " ", "X"]]
-            elif(self.winner == "O"): self.grid= [["O", "O", "O"],["O", " ", "O"],["O", "O", "O"]]
-            return
+        if self.grid[0][0] == self.grid[1][1] == self.grid[2][2] and self.grid[0][0] != " ": self.winner = self.grid[0][0]
+        if self.grid[0][2] == self.grid[1][1] == self.grid[2][0] and self.grid[0][2] != " ": self.winner = self.grid[0][2]
         for i in range(3):
-            if self.grid[i][0] == self.grid[i][1] == self.grid[i][2] and self.grid[i][0] != " " and self.grid[i][0] != "-" :
-                self.winner = self.grid[i][0]
-                if(self.winner == "X"): self.grid= [["X", " ", "X"],[" ", "X", " "],["X", " ", "X"]]
-                elif(self.winner == "O"): self.grid= [["O", "O", "O"],["O", " ", "O"],["O", "O", "O"]]
-                return
-            if self.grid[0][i] == self.grid[1][i] == self.grid[2][i] and self.grid[0][i] != " " and self.grid[0][i] != "-" :
-                self.winner = self.grid[0][i]
-                if(self.winner == "X"): self.grid= [["X", " ", "X"],[" ", "X", " "],["X", " ", "X"]]
-                elif(self.winner == "O"): self.grid= [["O", "O", "O"],["O", " ", "O"],["O", "O", "O"]]
-                return
-        
-        if self.filled == 9:
+            if self.grid[i][0] == self.grid[i][1] == self.grid[i][2] and self.grid[i][0] != " ": self.winner = self.grid[i][0]
+            if self.grid[0][i] == self.grid[1][i] == self.grid[2][i] and self.grid[0][i] != " ": self.winner = self.grid[0][i]
+
+        if(self.winner == "X"): self.grid = [["X", " ", "X"],[" ", "X", " "],["X", " ", "X"]]
+        elif(self.winner == "O"): self.grid = [["O", "O", "O"],["O", " ", "O"],["O", "O", "O"]]
+        elif self.filled == 9:
             self.winner = "-"
             self.grid = [["-", "-", "-"],["-", "-", "-"],["-", "-", "-"]]
 
