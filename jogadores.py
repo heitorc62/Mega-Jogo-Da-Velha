@@ -1,4 +1,5 @@
 import random
+import sys
 
 from numpy.core.fromnumeric import choose
 from megajogodavelha import *
@@ -8,26 +9,28 @@ class Game():
     def __init__(self, player1, player2):
         self.positions = np.arange(0, 81)
         self.tab = Mega()
-        self.player1 = player1
-        self.player2 = player2
+        self.players = [player1, player2]
+    
+    def reset(self):
+        self.positions = np.arange(0, 81)
+        self.tab = Mega()
 
+        
     def playing(self):
         step = 0
-        valid = 1
-        while self.tab.winner == -1:
+        valid = 1  
+        while self.tab.winner == -1: 
             if valid: self.tab.show()
-            if step % 2 == 0:
-                if self.player1.play(self) == 0:
-                    step += 1
-                    valid = 1
-                else: valid = 0
-            else:
-                if self.player2.play(self) == 0:
-                    step += 1
-                    valid = 1
-                else: valid = 0
+            turn = step % 2
+            if self.players[turn].play(self) == 0:
+                step += 1
+                valid = 1
+            else: valid = 0
             self.tab.check_winner()
             print()
+        self.show_winner()
+        
+    def show_winner(self):
         self.tab.show()
         if self.tab.winner == '-':
             print("Draw!!")
@@ -38,8 +41,11 @@ class Game():
 class Player():
     def __init__ (self, team):
         self.team = team
+        if team != 'X' and team != 'O':
+            print("Choose a valid team (X or O)")
     
     def play(self, game, tab_num, row, col, team):
+        assert(team == "X" or team == "O"), "You have chosen invalid teams! The game will be interrupted."
         x = (tab_num - 1) * 9 + (row - 1) * 3 + col - 1
         game.positions = game.positions[~np.isin(game.positions, x)]
         return game.tab.play(tab_num, row, col, team)
@@ -50,14 +56,17 @@ class Human(Player):
     
     def play(self, game):
         print(f"Player {self.team} : What is your play? Ex: 2 1 3 -> mini-board 2, row 1 and column 3")
-        tab_num, row, col = [int(i) for i in input().split()]
+        play = [int(i) for i in input().split()]
+        if len(play) != 3:
+            print("Please, make an valid play")
+            return -1
+        tab_num, row, col = play
         return Player.play(self, game, tab_num, row,col, self.team)  
 
         
 class Clumsy(Player):
     def __init__(self, team):
         Player.__init__(self, team)
-    
     
     def play(self, game):
         chosen = random.choice(game.positions)
