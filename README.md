@@ -96,6 +96,9 @@ To initialize a player class you have to pass "X" or "O" as argument to choose y
 player1 = Noob("X")
 ```
 
-## Contributors
+## User Guide
 
-Participants |nUSP
+To enjoy this game, the users will play it using python's interative mode. Firstly, being in the same directory of the files in this repository, you will have to type "python3" in your bash.
+Then, you'll have entered in python's interative mode.
+Now, the user has to import "megajogodavelha" and "jogadores", trailing the following steps:
+*
