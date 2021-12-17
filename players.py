@@ -55,12 +55,3 @@ class Noob(Player):
         chosen //= 3
         tab_num = chosen + 1
         return Player.play(self, game, tab_num, row, col, self.team)
-
-def main():
-    player1 = Noob("X")
-    player2 = Noob("O")
-    game = Game(player1, player2)
-    game.playing()
-
-if __name__ == "__main__":
-    main()

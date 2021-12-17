@@ -109,23 +109,3 @@ class Mini(Board):
         
     def __str__(self):
         return (f" {self.grid[0][0]} | {self.grid[0][1]} | {self.grid[0][2]} \n {self.grid[1][0]} | {self.grid[1][1]} | {self.grid[1][2]} \n {self.grid[2][0]} | {self.grid[2][1]} | {self.grid[2][2]}")
-
-def main():
-    tab = Mega()
-    jogador = 0
-    while tab.winner == -1:
-        tab.show()
-        atual = "X" if jogador % 2 == 0 else "O" 
-        print(f"Jogador {atual} : Qual sua jogada? Ex: 2 1 3 , para tabuleiro 2 linha 1 e coluna 3")
-        grid, row, col =  [int(i) for i in input().split()]
-        if(tab.play(grid,row,col,atual) == 0):
-            jogador += 1
-            tab.check_winner()
-    tab.show()
-    if tab.winner == "-":
-        print("Deu Velha!!")
-    else:
-        print(f"O vencedor é: {tab.winner}")
-
-if __name__ == "__main__":
-    main()
