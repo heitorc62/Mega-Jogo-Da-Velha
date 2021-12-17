@@ -54,14 +54,18 @@ Almost the same as Mini's play, but this one has a argument called **wich** that
 ```py
 def show()
 ```
-The **show** method print the global board with the all local boards inside.\
-Example:![image](https://user-images.githubusercontent.com/85133393/146601927-466582e2-f75b-458f-be4a-603e7f56571d.png)\
+The **show** method prints the global board with all the local boards inside.
+
+
+Example:
+
+![image](https://user-images.githubusercontent.com/85133393/146601927-466582e2-f75b-458f-be4a-603e7f56571d.png)\
 When a local board has a X shape, the X player has won that local board. Same to local board with O shape.
 
 #### Game
 This class represents an Ultimate Tic-Tac-Toe game.
 * Initialize:
-To initialize a Game class you have to pass two [players](#players-classes) as argument. For example:
+To initialize a Game class you have to pass two [players](#players-classes) as arguments. For example:
 ```py
 game = Game(player1, player2)
 ```
@@ -69,15 +73,15 @@ game = Game(player1, player2)
 ```py
 def reset(self)
 ```
-The **reset** method clean the entire game and keep the players that were playing.
+The **reset** method cleans the entire game and keeps the players that were playing.
 ```py
 def playing(self)
 ```
-The **playing** method run the entire game and stop when someone won the game or all cell's are filled.
+The **playing** method runs the entire game and stops when someone won the game or all cell's are filled.
 ```py
 def show_winner(self)
 ```
-The **show_winner** method print the winner of the game or when the game tied.
+The **show_winner** method prints the winner of the game or when the game tied.
 
 ## Players Classes
 This repository has three player types:
@@ -98,7 +102,31 @@ player1 = Noob("X")
 
 ## User Guide
 
-To enjoy this game, the users will play it using python's interative mode. Firstly, being in the same directory of the files in this repository, you will have to type "python3" in your bash.
+To enjoy this game, the users will play it using python's interative mode. Firstly, being in the same directory of the files in this repository, you will have to type "python3" in your console.
 Then, you'll have entered in python's interative mode.
-Now, the user has to import "megajogodavelha" and "jogadores", trailing the following steps:
-*
+Now, the user has to import "boards" and "players", trailing the following steps:
+```sh
+>>> from boards import *
+>>> from players import *
+```
+Then, you should define the players, for example, in a Human x Clumsy mode:
+```sh
+>>> player1 = Human("X")
+>>> player2 = Clumsy("O")
+```
+Now, the only thing left is to play!
+```sh
+>>> game = Game(player1, player2)
+>>> game.playing
+```
+Yet, if you want to use python's scripting mode to play this this game, that is possible too.
+All you'll have to do is, create a .py file and type the following lines (in this example, the Noob x Human mode is shown):
+
+```py
+player1 = Noob("X")
+player2 = Human("O")
+game = Game(player1, player2)
+game.playing()
+```
+
+Enjoy!
