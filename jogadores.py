@@ -1,42 +1,8 @@
 import random
 import sys
 
-from numpy.core.fromnumeric import choose
 from megajogodavelha import *
 import numpy as np
-
-class Game():
-    def __init__(self, player1, player2):
-        self.positions = np.arange(0, 81)
-        self.tab = Mega()
-        self.players = [player1, player2]
-    
-    def reset(self):
-        self.positions = np.arange(0, 81)
-        self.tab = Mega()
-
-        
-    def playing(self):
-        step = 0
-        valid = 1  
-        while self.tab.winner == -1: 
-            if valid: self.tab.show()
-            turn = step % 2
-            if self.players[turn].play(self) == 0:
-                step += 1
-                valid = 1
-            else: valid = 0
-            self.tab.check_winner()
-            print()
-        self.show_winner()
-        
-    def show_winner(self):
-        self.tab.show()
-        if self.tab.winner == '-':
-            print("Draw!!")
-        else:
-            print(self.tab.winner)
-        
 
 class Player():
     def __init__ (self, team):
@@ -91,8 +57,8 @@ class Noob(Player):
         return Player.play(self, game, tab_num, row, col, self.team)
 
 def main():
-    player1 = Clumsy("X")
-    player2 = Clumsy("O")
+    player1 = Noob("X")
+    player2 = Noob("O")
     game = Game(player1, player2)
     game.playing()
 
