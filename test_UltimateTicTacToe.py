@@ -97,7 +97,5 @@ class Test_Game():
 
         # output = get_display_output()
 
-if __name__ == "__main__":
-    sys.exit(pytest.main(["-qq"], plugins=[MyPlugin()]))
 
 
