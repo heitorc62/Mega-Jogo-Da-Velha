@@ -96,3 +96,6 @@ To initialize a player class you have to pass "X" or "O" as argument to choose y
 player1 = Noob("X")
 ```
 
+## Contributors
+
+Participants |nUSP
