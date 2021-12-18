@@ -7,7 +7,7 @@ That's a [Ultimate Tic-Tac-Toe](https://en.wikipedia.org/wiki/Ultimate_tic-tac-t
 * [Game Rules changes](#game-rules-changes)
 * [Boards and Game Classes](#boards-and-game-classes)
 * [Players Classes](#players-classes)
-* [User Guide](#user-guide)
+* [If you want to use our classes](#if-you-want-to-use-our-classes)
 
 ## Contributors
 
@@ -100,9 +100,10 @@ To initialize a player class you have to pass "X" or "O" as argument to choose y
 player1 = Noob("X")
 ```
 
-## User Guide
+## If you want to use our classes 
 
-To enjoy this game, the users will play it using python's interative mode. Firstly, being in the same directory of the files in this repository, you will have to type "python3" in your console.
+#### To use our classes in python's interative mode:
+Firstly, being in the same directory of the files in this repository, you will have to type "python3" in your console.\
 Then, you'll have entered in python's interative mode.
 Now, the user has to import "boards" and "players", trailing the following steps:
 ```sh
@@ -119,7 +120,7 @@ Now, the only thing left is to play!
 >>> game = Game(player1, player2)
 >>> game.playing
 ```
-Yet, if you want to use python's scripting mode to play this this game, that is possible too.
+Yet, if you want to use python's scripting mode to use our classes, that is possible too.
 All you'll have to do is, create a .py file and type the following lines (in this example, the Noob x Human mode is shown):
 
 ```py
@@ -131,5 +132,8 @@ player2 = Human("O")
 game = Game(player1, player2)
 game.playing()
 ```
-You can find this example in **Uttt.py**.\
-Enjoy!
+## Play the game
+The game is in **Uttt.py**. You just need run the file and the game starts.\
+At first, it will ask the type of the players that will play. *You have to type 1 for Human, 2 for Noob, or another number for Clumsy.*\
+After that, the game will start.
+***Enjoy!***
