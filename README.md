@@ -120,7 +120,7 @@ Now, the only thing left is to play!
 >>> game = Game(player1, player2)
 >>> game.playing
 ```
-Yet, if you want to use python's scripting mode to use our classes, that is possible too.
+#### Yet, if you want to use python's scripting mode to use our classes, that is possible too.
 All you'll have to do is, create a .py file and type the following lines (in this example, the Noob x Human mode is shown):
 
 ```py
