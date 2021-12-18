@@ -123,6 +123,9 @@ Yet, if you want to use python's scripting mode to play this this game, that is 
 All you'll have to do is, create a .py file and type the following lines (in this example, the Noob x Human mode is shown):
 
 ```py
+from boards import *
+from players import *
+
 player1 = Noob("X")
 player2 = Human("O")
 game = Game(player1, player2)
