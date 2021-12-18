@@ -19,7 +19,7 @@ Nathan Luiz Bezerra Martins | 11805061
 
 ## Requirements
 Some player classes are using [NumPy](https://numpy.org/install/)'s arrays, you need to install it.\
-Moreover, if you want to run our tests you have to install [Pytest](https://docs.pytest.org/en/6.2.x/getting-started.html).
+Moreover, if you want to run our tests you have to install [Pytest](https://docs.pytest.org/en/6.2.x/getting-started.html). If you want to have more details about the test, install [pytest-cov](https://pytest-cov.readthedocs.io/en/latest/readme.html#installation).
 
 ## Game Rules changes
 The difference between the original Ultimate Tic Tac Toe's game and this one is that every turn the player can choose any local board to play.
@@ -128,5 +128,5 @@ player2 = Human("O")
 game = Game(player1, player2)
 game.playing()
 ```
-
+You can find this example in **Uttt.py**.\
 Enjoy!
