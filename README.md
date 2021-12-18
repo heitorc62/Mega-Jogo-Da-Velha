@@ -8,6 +8,7 @@ That's a [Ultimate Tic-Tac-Toe](https://en.wikipedia.org/wiki/Ultimate_tic-tac-t
 * [Boards and Game Classes](#boards-and-game-classes)
 * [Players Classes](#players-classes)
 * [If you want to use our classes](#if-you-want-to-use-our-classes)
+* [Play the game](#play-the-game)
 
 ## Contributors
 
