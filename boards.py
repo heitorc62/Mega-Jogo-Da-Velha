@@ -34,10 +34,6 @@ class Game():
             print("Congratulations,",self.tab.winner,"won the game!")
 
 class Board():
-    # ' ' -> nao marcado
-    # 'X' -> player 1
-    # 'O' -> jogador 2
-    # '-' -> velha
     def __init__(self):
         self.grid = [[" ", " ", " "],[" ", " ", " "],[" ", " ", " "]]
         self.winner = -1

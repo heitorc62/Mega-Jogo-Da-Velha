@@ -1,5 +1,4 @@
 import random
-import sys
 
 from boards import *
 import numpy as np

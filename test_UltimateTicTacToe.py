@@ -1,8 +1,5 @@
 from boards import *
 from players import *
-import pytest
-import sys
-from teste_velha import velha
 
 class Test_Board():
     def test_check_winner(self):
@@ -71,7 +68,6 @@ class Test_Mega():
     
 class Test_Game():
     def test_Game(self):
-        p0 = Noob("o")
         p0 = Noob("O")
         p1 = Clumsy("X")
         game = Game(p0, p1)
